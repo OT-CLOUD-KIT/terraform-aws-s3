@@ -37,19 +37,19 @@ output "name" {
 
 output "elb_identifier" {
   description = "ELB log delivery service identifier."
-  value = flatten([
+  value = length(data.aws_iam_policy_document.elb_log_delivery[0].statement) > 0 ? flatten([
     for statement in data.aws_iam_policy_document.elb_log_delivery[0].statement :
     [
       for principal in statement.principals :
       flatten([principal.identifiers]) if can(principal.identifiers) && principal.type == "Service"
     ]
-  ])[0]
+  ])[0] : null
 }
 
 
 output "lb_identifier" {
   description = "ALB/NLB log delivery service identifier."
-  value = [
+  value = length(data.aws_iam_policy_document.lb_log_delivery[0].statement) > 0 ?[
     for statement in data.aws_iam_policy_document.lb_log_delivery[0].statement :
     [
       for principal in statement.principals :
@@ -57,5 +57,5 @@ output "lb_identifier" {
       if can(principal.identifiers) && principal.type == "Service"
     ][0]
     if can(statement.principals)
-  ][0]
+  ][0] : null
 }
