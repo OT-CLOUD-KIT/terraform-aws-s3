@@ -35,7 +35,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "this" {
 
     content {
       id  = rule.value.id
-      status = "Enabled"
+      status = rule.value.status
 
       dynamic "transition" {
         for_each = rule.value.transitions

@@ -189,6 +189,7 @@ variable "lifecycle_rules" {
  description = "List of lifecycle rules for S3 bucket"
  type = list(object({
   id = string
+  status = string
   transitions = list(object({
    days     = number
    storage_class = string
@@ -198,6 +199,7 @@ variable "lifecycle_rules" {
  default = [
   {
    id = "Transition to IA"
+   status = "Enabled"
    transitions = [
     {
      days     = 30
@@ -211,6 +213,10 @@ variable "lifecycle_rules" {
    expiration_days = null
   }
  ]
+#  validation {
+#   condition   = var.lifecycle_rules.status == "Enabled" || var.lifecycle_rules.status == "Disabled"
+#   error_message = "Invalid value for 'status'. Must be either 'Enabled' or 'Disabled'."
+#  }
 }
 
 
