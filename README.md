@@ -14,6 +14,8 @@ Suitable for production-grade S3 use cases with customization options for loggin
 
 ## Architecture
 
+<img width="1189" height="492" alt="image" src="https://github.com/user-attachments/assets/d4548e51-0db1-4e95-89e8-9e5c338751d0" />
+
 
 > **Note:**  
 > The diagram below illustrates the core components managed by this module: S3 bucket, logging, versioning, lifecycle rules, policies, encryption, and replication.
