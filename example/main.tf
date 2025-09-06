@@ -1,23 +1,3 @@
-module "naming" {
-  source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=dev"
-  bu       = var.bu
-  env      = var.env
-  app      = var.app
-  tenant   = var.tenant
-  resource = var.resource
-}
-
-module "standard_tags" {
-  source = "git@github.com:OT-CLOUD-KIT/terraform-aws-standard-tagging.git?ref=dev"
-
-  bu      = var.bu
-  program = var.program
-  app     = var.app
-  team    = var.team
-  region  = var.region
-  env     = var.env
-}
-
 
 module "s3_bucket" {
   source = "git@github.com:OT-CLOUD-KIT/terraform-aws-s3.git?ref=Feature"
@@ -29,12 +9,9 @@ module "s3_bucket" {
   object_lock_enabled                  = var.object_lock_enabled
   enable_transfer_acceleration         = var.enable_transfer_acceleration
   acl                                  = var.acl
-  bu                         = var.bu
-  program                    = var.program
-  team                       = var.team
-  app                        = var.app
-  env                        = var.env
-  region                     = var.region
+  app = var.app
+  owner = var.owner
+  env = var.env
   attach_public_policy                 = var.attach_public_policy
   block_public_acls                    = var.block_public_acls
   block_public_policy                  = var.block_public_policy

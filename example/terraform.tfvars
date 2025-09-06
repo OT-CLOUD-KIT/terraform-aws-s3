@@ -67,21 +67,10 @@ elb_identifier      = "logdelivery.elb.amazonaws.com"
 lb_identifier       = "logdelivery.elasticloadbalancing.amazonaws.com"
 log_delivery_folder = "logs"
 
-lb_log_delivery_conditions = {}################# Naming Convension #####################
+lb_log_delivery_conditions = {}#
+################ Naming Convension #####################
 
-random_alphanumeric_len = 4
-
-bu       = "ot"
-app      = "bp"
-env      = "d"
-resource = "s3"
-tenant   = ""
-
-special = false
-upper   = false
-number  = true
-
-gen_no_of_names = 1
-
-team    = "infra"
-program = "ot"
+env = "dev"
+app = "otcloud-kit"
+owner = "opstree"
+region = "us-east-1"
